@@ -389,6 +389,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "bevy_asset_loader"
+version = "0.20.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1de44dae5bfabc6311a687982a0eb77b70bd3b2f9f88de7351999810d76b275a"
+dependencies = [
+ "anyhow",
+ "bevy",
+ "bevy_asset_loader_derive",
+ "path-slash",
+]
+
+[[package]]
+name = "bevy_asset_loader_derive"
+version = "0.20.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ca8bf363b0d5287bcbd17cc3ad5b94b5f668d5cb4af74df301f1bde24fd6fea7"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.60",
+]
+
+[[package]]
 name = "bevy_asset_macros"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -431,6 +454,7 @@ dependencies = [
  "bevy_tasks",
  "bevy_utils",
  "bytemuck",
+ "serde",
 ]
 
 [[package]]
@@ -638,6 +662,7 @@ dependencies = [
  "bevy_math",
  "bevy_reflect",
  "bevy_utils",
+ "serde",
  "smol_str",
  "thiserror",
 ]
@@ -931,6 +956,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "bevy_tiles"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fcf8f502c28c81e2a13e9f940517ef6768813aeb877cb1494ef1d1bacc592c2e"
+dependencies = [
+ "bevy",
+ "bimap",
+]
+
+[[package]]
 name = "bevy_time"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -941,6 +976,7 @@ dependencies = [
  "bevy_reflect",
  "bevy_utils",
  "crossbeam-channel",
+ "serde",
  "thiserror",
 ]
 
@@ -955,6 +991,7 @@ dependencies = [
  "bevy_hierarchy",
  "bevy_math",
  "bevy_reflect",
+ "serde",
  "thiserror",
 ]
 
@@ -982,6 +1019,7 @@ dependencies = [
  "bevy_utils",
  "bevy_window",
  "bytemuck",
+ "serde",
  "taffy",
  "thiserror",
 ]
@@ -1030,6 +1068,7 @@ dependencies = [
  "bevy_reflect",
  "bevy_utils",
  "raw-window-handle 0.6.1",
+ "serde",
  "smol_str",
 ]
 
@@ -1057,6 +1096,12 @@ dependencies = [
  "web-sys",
  "winit 0.29.15",
 ]
+
+[[package]]
+name = "bimap"
+version = "0.6.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "230c5f1ca6a325a32553f8640d31ac9b49f2411e901e427570154868b46da4f7"
 
 [[package]]
 name = "bindgen"
@@ -2628,7 +2673,10 @@ name = "interactive_fiction_test"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "bevy_asset_loader",
+ "bevy_tiles",
  "bracket-lib",
+ "leafwing-input-manager",
  "rand",
  "ron",
  "serde",
@@ -2742,6 +2790,31 @@ name = "lazycell"
 version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
+
+[[package]]
+name = "leafwing-input-manager"
+version = "0.13.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "def515aa1461ed6ed5d55d53cea6c7149a3076c331cfea1d920682884bfaf839"
+dependencies = [
+ "bevy",
+ "derive_more",
+ "itertools",
+ "leafwing_input_manager_macros",
+ "serde",
+]
+
+[[package]]
+name = "leafwing_input_manager_macros"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5d065e4f0771d9cc597e76d648da18476ad01fd50cd60ee585ee500f9cd8d696"
+dependencies = [
+ "proc-macro-crate 3.1.0",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.60",
+]
 
 [[package]]
 name = "lewton"
@@ -3456,6 +3529,12 @@ name = "paste"
 version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c"
+
+[[package]]
+name = "path-slash"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e91099d4268b0e11973f036e885d652fb0b21fedcf69738c627f94db6a44f42"
 
 [[package]]
 name = "percent-encoding"

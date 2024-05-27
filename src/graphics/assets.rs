@@ -1,27 +1,21 @@
 use bevy::prelude::*;
 
-use super::GraphicAssets;
+use super::{CharsetAsset, TILE_SIZE};
 
-const ATLAS_PATH: &str = "ascii.png";
+const ATLAS_PATH: &str = "terminal8x8_transparent.png";
 
 pub fn load_assets(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
-    mut texture_atlases: ResMut<Assets<TextureAtlas>>,
-    mut asset_list: ResMut<crate::assets::AssetList>
+    mut atlases: ResMut<Assets<TextureAtlasLayout>>,
 ) {
-    let texture = asset_server.load(ATLAS_PATH);
-    asset_list.0.push(texture.clone_untyped());
-    let atlas = TextureAtlas::from_grid(
-        texture,
-        Vec2::splat(10.),
-        16,
-        16,
-        None,
-        None
-    );
-    let handle = texture_atlases.add(atlas);
-    commands.insert_resource(
-        GraphicAssets { sprite_texture: handle }
-    );
+    // Setup the sprite sheet
+    let texture_handle: Handle<Image> = asset_server.load("terminal8x8_transparent.png");
+    let layout = TextureAtlasLayout::from_grid(Vec2::splat(TILE_SIZE), 16, 16, None, None);
+    let layout_handle = atlases.add(layout);
+    // add sprite atlas as resource
+    commands.insert_resource(CharsetAsset {
+        atlas: layout_handle.clone(),
+        texture: texture_handle.clone()
+    });
 }

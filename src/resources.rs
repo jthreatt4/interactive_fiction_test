@@ -1,11 +1,5 @@
 use bevy::prelude::*;
 
-#[derive(Resource)]
-pub struct CharsetAsset {
-    pub atlas: Handle<TextureAtlasLayout>,
-    pub texture: Handle<Image>,
-}
-
 /*
 Example turn queue
 1. Say you have three events in your queue: Player [0], Enemy [0], and Turn [100]. The initiative is set in that order.
